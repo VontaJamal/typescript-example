@@ -1,6 +1,6 @@
-import {NBALogo} from '../interfaces/interfaces'
+import {Logo} from '../interfaces/interfaces'
 
-const nbaLogos: NBALogo[] = [
+const nbaLogos: Logo[] = [
   {
     teamAbbreviation: 'ATL',
     teamLogo:

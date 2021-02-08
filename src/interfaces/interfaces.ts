@@ -1,4 +1,4 @@
-export interface NBATeam {
+export interface Team {
   id: number
   abbreviation: string
   city: string
@@ -9,7 +9,7 @@ export interface NBATeam {
   image?: string
 }
 
-export interface NBALogo {
+export interface Logo {
   teamAbbreviation: string
   teamLogo: string
 }
