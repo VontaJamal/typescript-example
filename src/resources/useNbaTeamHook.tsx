@@ -5,7 +5,11 @@ import logos from '../resources/logos'
 const {useState, useEffect} = React
 
 export default function useNBATeams() {
-  const [nbaTeams, setNBATeams] = useState<Team[]>([])
+  const [nbaTeams, setNBATeams] = useState<Team[]>(() => {
+    const defaultTeams = window.localStorage.getItem('teams')
+    if (defaultTeams) return JSON.parse(defaultTeams)
+    return []
+  })
 
   useEffect(() => {
     const getLogo = (nbaTeam: Team) => {
@@ -21,6 +25,7 @@ export default function useNBATeams() {
       )?.data
 
       teamList.forEach((team) => getLogo(team))
+      window.localStorage.setItem('teams', JSON.stringify(teamList))
       setNBATeams(teamList)
     }
 
