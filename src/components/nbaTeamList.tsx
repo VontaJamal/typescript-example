@@ -22,7 +22,7 @@ const NBATeam = ({
           mb={[3, null]}
           onMouseEnter={() => setTeam(name)}
           onMouseLeave={() => setTeam('')}
-          // h='100%'
+          border='1px solid crimson'
         >
           <Image
             boxSize={['lg', '15rem']}
