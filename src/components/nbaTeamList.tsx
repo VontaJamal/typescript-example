@@ -22,12 +22,11 @@ const NBATeam = ({
           mb={[3, null]}
           onMouseEnter={() => setTeam(name)}
           onMouseLeave={() => setTeam('')}
-          h='100%'
+          h={'100%'}
         >
           <Image
-            boxSize={['lg', '15rem']}
+            boxSize={['2xs', null, '15rem']}
             w={[null, null, 'auto']}
-            h={['auto', null]}
             objectFit='contain'
             src={image}
             alt={`${name} Logo`}
