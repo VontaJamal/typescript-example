@@ -1,9 +1,7 @@
 import * as React from 'react'
 import {Team} from '../interfaces/interfaces'
-import {Image, LinkBox} from '@chakra-ui/react'
+import {Image, LinkBox, Flex} from '@chakra-ui/react'
 import {Link} from '@reach/router'
-
-import {MotionBox} from './motionComponents/motionComponents'
 
 const NBATeam = ({
   team,
@@ -16,13 +14,15 @@ const NBATeam = ({
   return (
     <LinkBox>
       <Link to='/teamInfo' state={{team}}>
-        <MotionBox
-          alignSelf='center'
-          align='center'
+        <Flex
+          placeContent='center'
           _hover={{cursor: 'pointer'}}
-          p={['.3rem', 5]}
+          pl={[3, null, 5]}
+          pr={[3, null, 5]}
+          mb={[3, null]}
           onMouseEnter={() => setTeam(name)}
           onMouseLeave={() => setTeam('')}
+          h='100%'
         >
           <Image
             boxSize={['lg', '15rem']}
@@ -32,7 +32,7 @@ const NBATeam = ({
             src={image}
             alt={`${name} Logo`}
           />
-        </MotionBox>
+        </Flex>
       </Link>
     </LinkBox>
   )

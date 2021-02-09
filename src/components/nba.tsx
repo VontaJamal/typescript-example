@@ -11,6 +11,11 @@ const NBATeamList = ({
 }) => {
   const nbaTeams = useNBATeams()
 
+  React.useEffect(() => {
+    document.body.classList.add('stopScrolling')
+    return () => document.body.classList.remove('stopScrolling')
+  })
+
   const displayTeams = nbaTeams.map((team) => (
     <NBATeam key={team.teamId} team={team} setTeam={setTeam} />
   ))
@@ -22,7 +27,7 @@ const NBATeamList = ({
       p={5}
       className='teamGrid'
       overflowY='scroll'
-      h={['70vh', '85vh']}
+      h={['75vh', '90vh']}
     >
       {displayTeams}
     </MotionSimpleGrid>

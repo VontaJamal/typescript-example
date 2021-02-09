@@ -51,13 +51,14 @@ const TeamInformation = (props: Props) => {
         >
           <Link to='/'>
             <Image
-              boxSize={['lg', '17rem']}
+              boxSize={['md', 'lg', '17rem']}
               w={[null, null, 'auto']}
               h={['auto', null]}
               objectFit='contain'
               src={image}
               alt={`${name} Logo`}
-              pr={5}
+              p={[3, null, 0]}
+              pr={[0, null, 5]}
             />
           </Link>
           <Stack
@@ -70,6 +71,7 @@ const TeamInformation = (props: Props) => {
               pb={[0, null, null, 15]}
               style={headerStyles}
               mt={['1rem', null]}
+              align='center'
             >
               {name}
             </Heading>
