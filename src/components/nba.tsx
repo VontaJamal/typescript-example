@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import useNBATeams from '../resources/useNbaTeamHook'
+import {useNBATeams} from '../resources/customHooks'
 import NBATeam from './nbaTeamList'
 import {MotionSimpleGrid} from './motionComponents/motionComponents'
 
@@ -12,7 +12,7 @@ const NBATeamList = ({
   const nbaTeams = useNBATeams()
 
   const displayTeams = nbaTeams.map((team) => (
-    <NBATeam key={team.id} team={team} setTeam={setTeam} />
+    <NBATeam key={team.teamId} team={team} setTeam={setTeam} />
   ))
 
   return (

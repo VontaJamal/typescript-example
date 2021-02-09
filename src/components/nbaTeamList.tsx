@@ -12,16 +12,16 @@ const NBATeam = ({
   team: Team
   setTeam: React.Dispatch<React.SetStateAction<string>>
 }) => {
-  const {full_name: name, image} = team
+  const {nickname: name, image} = team
   return (
     <LinkBox>
-      <Link to='/players'>
+      <Link to='/teamInfo' state={{team}}>
         <MotionBox
           alignSelf='center'
           align='center'
           _hover={{cursor: 'pointer'}}
           p={['.3rem', 5]}
-          onMouseEnter={() => setTeam(team.name)}
+          onMouseEnter={() => setTeam(name)}
           onMouseLeave={() => setTeam('')}
         >
           <Image
