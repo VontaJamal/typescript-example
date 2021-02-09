@@ -42,7 +42,7 @@ const TeamInformation = (props: Props) => {
         <MotionBox
           initial={{y: -500}}
           animate={{y: 0}}
-          transition={{ease: 'backInOut', duration: 0.8}}
+          transition={{ease: 'easeOut', duration: 0.8}}
         >
           <Flex
             align='center'

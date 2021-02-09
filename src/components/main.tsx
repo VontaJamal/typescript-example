@@ -31,7 +31,7 @@ const Main = (props: RouteComponentProps) => {
           <Stack
             align='center'
             justify='center'
-            direction={['column', null, null, 'row']}
+            direction={['column', null, null, null, 'row']}
           >
             <Text>Who Plays For Them?!</Text>
             <Text>{`${team ? `-${team}` : ''}`}</Text>

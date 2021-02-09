@@ -3,6 +3,7 @@ import * as React from 'react'
 import {useNBATeams} from '../resources/customHooks'
 import NBATeam from './nbaTeamList'
 import {MotionSimpleGrid} from './motionComponents/motionComponents'
+import {isMobile} from 'react-device-detect'
 
 const NBATeamList = ({
   setTeam,
@@ -25,7 +26,7 @@ const NBATeamList = ({
       columns={[2, null, 3, 4, 5]}
       gap={5}
       p={5}
-      className='teamGrid'
+      className={`${isMobile ? '' : 'teamGrid'}`}
       overflowY='scroll'
       h={['75vh', '90vh']}
     >
