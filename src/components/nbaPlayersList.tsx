@@ -1,7 +1,7 @@
 import React, {FunctionComponent} from 'react'
 import {Text} from '@chakra-ui/react'
 
-import {Heading, Box} from '@chakra-ui/react'
+import {Heading} from '@chakra-ui/react'
 
 import {useNBAPlayers} from '../resources/customHooks'
 import {MotionBox, MotionSimpleGrid} from './motionComponents/motionComponents'

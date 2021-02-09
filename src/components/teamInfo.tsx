@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {Text, Box, Image, Stack, Flex, Heading} from '@chakra-ui/react'
+import {Text, Image, Stack, Flex, Heading} from '@chakra-ui/react'
 import {RouteComponentProps, Link} from '@reach/router'
 import {Team} from '../interfaces/interfaces'
 import NBAPlayersList from './nbaPlayersList'
