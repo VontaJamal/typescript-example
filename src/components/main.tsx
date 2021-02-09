@@ -3,10 +3,14 @@ import {Grid, Heading, Text, Stack} from '@chakra-ui/react'
 import NBATeamList from './nba'
 import {RouteComponentProps} from '@reach/router'
 
-const {useState} = React
+const {useState, useEffect} = React
 
 const Main = (props: RouteComponentProps) => {
   const [team, setTeam] = useState<string>('')
+
+  useEffect(() => {
+    document.title = team ? `Who on the ${team}?!` : 'Who Plays For Them?!'
+  }, [team])
 
   return (
     <Grid p={3} pt={0} pr={0} pl={0}>

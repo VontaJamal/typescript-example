@@ -148,7 +148,7 @@ const nbaLogos: Logo[] = [
   {
     shortName: 'WAS',
     teamLogo:
-      'https://content.sportslogos.net/logos/6/219/full/x2ulyduse08rm42lmtu9ugych.png',
+      'https://content.sportslogos.net/logos/6/219/full/5671_washington_wizards-primary-2016.png',
   },
 ]
 

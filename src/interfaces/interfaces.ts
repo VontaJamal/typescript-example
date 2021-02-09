@@ -21,7 +21,7 @@ export interface Logo {
   teamLogo: string
 }
 
-export interface Players {
+export interface Player {
   firstName: string
   lastName: string
   teamId: string

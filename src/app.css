@@ -5,6 +5,10 @@
   caret-color: transparent;
 }
 
+.stopScrolling {
+  overflow-y: hidden;
+}
+
 .teamGrid:hover > * {
   opacity: 0.5;
   transition: opacity 0.3s;

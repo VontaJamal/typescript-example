@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {Team, Players} from '../interfaces/interfaces'
+import {Team, Player} from '../interfaces/interfaces'
 import logos from '../resources/logos'
 
 const {useState, useEffect} = React
@@ -13,6 +13,7 @@ export function useNBATeams() {
   })
 
   useEffect(() => {
+    if (nbaTeams.length > 0) return
     const getLogo = (nbaTeam: Team) => {
       const logo = logos.find((logo) => logo.shortName === nbaTeam.shortName)
       nbaTeam.image = logo?.teamLogo
@@ -41,21 +42,22 @@ export function useNBATeams() {
     }
 
     getTeams()
-  }, [])
+  }, [nbaTeams.length])
 
   return nbaTeams
 }
 
 export function useNBAPlayers(teamId: string) {
-  const [nbaPlayers, setNBAPlayers] = useState<Players[]>(() => {
+  const [nbaPlayers, setNBAPlayers] = useState<Player[]>(() => {
     const defaultPlayers = window.localStorage.getItem(`players${teamId}`)
     if (defaultPlayers) return JSON.parse(defaultPlayers)
     return []
   })
 
   useEffect(() => {
+    if (nbaPlayers.length > 0) return //* Retrieved from local storage
     const getPlayers = async (teamId: string) => {
-      const teamPlayers: Players[] = (
+      const teamPlayers: Player[] = (
         await (
           await fetch(
             `https://api-nba-v1.p.rapidapi.com/players/teamId/${teamId}`,
@@ -69,10 +71,10 @@ export function useNBAPlayers(teamId: string) {
         ).json()
       ).api.players
         .filter(
-          (player: Players) =>
+          (player: Player) =>
             player?.leagues?.standard?.active === '1' && +player.yearsPro > 0
         )
-        .sort((playerOne: Players, playerTwo: Players) => {
+        .sort((playerOne: Player, playerTwo: Player) => {
           const playerOneName = playerOne.lastName.toUpperCase()
           const playerTwoName = playerTwo.lastName.toUpperCase()
 
@@ -94,6 +96,6 @@ export function useNBAPlayers(teamId: string) {
     }
 
     getPlayers(teamId)
-  }, [teamId])
+  }, [teamId, nbaPlayers.length])
   return nbaPlayers
 }
