@@ -38,8 +38,6 @@ export function useNBATeams() {
       teamList.forEach((team) => getLogo(team))
       window.localStorage.setItem('teams', JSON.stringify(teamList))
       setNBATeams(teamList)
-
-      console.log('teamList :>> ', teamList)
     }
 
     getTeams()
@@ -87,8 +85,6 @@ export function useNBAPlayers(teamId: string) {
 
           return 0
         })
-
-      console.log('playerList :>> ', teamPlayers)
 
       window.localStorage.setItem(
         `players${teamId}`,

@@ -34,4 +34,6 @@ export interface Players {
       pos: string
     }
   }
+  country: string
+  startNba: string
 }
