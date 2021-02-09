@@ -18,7 +18,7 @@ export const App = () => {
   return (
     <ChakraProvider theme={theme}>
       <Fonts />
-      <Box className='gradientBox' />
+
       <Router>
         <Main path='/' />
         <TeamInfo path='/teamInfo' />
