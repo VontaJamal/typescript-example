@@ -20,54 +20,73 @@ const TeamInformation = (props: Props) => {
   } = props?.location?.state.team!
 
   const textStyles: React.CSSProperties = {
-    paddingBottom: 15,
     fontWeight: 'bold',
-    fontSize: '20px',
+    fontSize: '25px',
     opacity: 0.9,
   }
 
   const headerStyles: React.CSSProperties = {
-    paddingBottom: 15,
     fontWeight: 'bold',
-    // fontSize: '20px',
+    fontSize: '45px',
   }
 
-  console.log('team', props?.location?.state.team!)
   return (
     <MotionSimpleGrid
       columns={1}
-      border='3px solid blue'
       rows={2}
-      p={5}
-      pt={0}
-      h={'95vh'}
-      templateRows='30vh'
+      pb={5}
+      templateRows={['auto', null, null, '30vh']}
     >
-      <MotionBox>
-        <Flex align='center' justify='center' h={'100%'}>
-          <Image
-            boxSize={['lg', '17rem']}
-            w={[null, null, 'auto']}
-            h={['auto', null]}
-            objectFit='contain'
-            src={image}
-            alt={`${name} Logo`}
-            pr={5}
-          />
+      <MotionBox
+        initial={{y: -500}}
+        animate={{y: 0}}
+        transition={{ease: 'easeOut', duration: 0.8}}
+      >
+        <Flex
+          align='center'
+          justify='center'
+          mt={5}
+          direction={['column', null, null, 'row']}
+          pb={5}
+        >
+          <Link to='/'>
+            <Image
+              boxSize={['lg', '17rem']}
+              w={[null, null, 'auto']}
+              h={['auto', null]}
+              objectFit='contain'
+              src={image}
+              alt={`${name} Logo`}
+              pr={5}
+            />
+          </Link>
           <Stack
             align='center'
-            direction={['row', null, null, 'column']}
+            direction={['column']}
             justify='space-evenly'
             h={'50%'}
           >
-            <Heading style={headerStyles}>{name}</Heading>
-            <Text style={textStyles}>{shortName}</Text>
-            <Text style={textStyles}>{`${conference}ern Conference`}</Text>
-            <Text style={textStyles}>{`${division} Division`}</Text>
+            <Heading
+              pb={[0, null, null, 15]}
+              style={headerStyles}
+              mt={['1rem', null]}
+            >
+              {name}
+            </Heading>
+            <Text pb={[0, null, null, 15]} style={textStyles}>
+              {shortName}
+            </Text>
+            <Text
+              pb={[0, null, null, 15]}
+              style={textStyles}
+            >{`${conference}ern Conference`}</Text>
+            <Text
+              pb={[0, null, null, 15]}
+              style={textStyles}
+            >{`${division} Division`}</Text>
           </Stack>
         </Flex>
       </MotionBox>
-      <Link to='/'>Show Teams</Link>
 
       <NBAPlayersList teamId={teamId} />
     </MotionSimpleGrid>
