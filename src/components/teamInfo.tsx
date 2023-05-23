@@ -10,6 +10,7 @@ interface Props
   extends RouteComponentProps<{location: {state: {team: Team}}}> {}
 
 const TeamInformation = (props: Props) => {
+  //@ts-ignore
   const team = useTeam(props.teamId);
 
   if (!team) return <Text></Text>;
