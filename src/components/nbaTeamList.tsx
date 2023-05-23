@@ -13,7 +13,7 @@ const NBATeam = ({
   const {nickname: name, image} = team
   return (
     <LinkBox>
-      <Link to='/teamInfo' state={{team}}>
+      <Link to={`/team/${team.teamId}`} state={{team}}>
         <Flex
           placeContent='center'
           _hover={{cursor: 'pointer'}}

@@ -21,7 +21,7 @@ export const App = () => {
 
       <Router>
         <Main path='/' />
-        <TeamInfo path='/teamInfo' />
+        <TeamInfo path='/team/:teamId' />
       </Router>
     </ChakraProvider>
   )

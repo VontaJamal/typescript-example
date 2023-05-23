@@ -1,14 +1,19 @@
-import * as React from 'react'
-import {Text, Image, Stack, Flex, Heading, Box} from '@chakra-ui/react'
-import {RouteComponentProps, Link} from '@reach/router'
-import {Team} from '../interfaces/interfaces'
-import NBAPlayersList from './nbaPlayersList'
-import {MotionBox, MotionSimpleGrid} from './motionComponents/motionComponents'
+import * as React from 'react';
+import {Text, Image, Stack, Flex, Heading, Box} from '@chakra-ui/react';
+import {RouteComponentProps, Link} from '@reach/router';
+import {Team} from '../interfaces/interfaces';
+import NBAPlayersList from './nbaPlayersList';
+import {MotionBox, MotionSimpleGrid} from './motionComponents/motionComponents';
+import {useTeam} from '../resources/customHooks';
 
 interface Props
   extends RouteComponentProps<{location: {state: {team: Team}}}> {}
 
 const TeamInformation = (props: Props) => {
+  const team = useTeam(props.teamId);
+
+  if (!team) return <Text></Text>;
+
   const {
     teamId,
     image,
@@ -17,18 +22,18 @@ const TeamInformation = (props: Props) => {
     leagues: {
       standard: {confName: conference, divName: division},
     },
-  } = props?.location?.state.team!
+  } = team!;
 
   const textStyles: React.CSSProperties = {
     fontWeight: 'bold',
     fontSize: '25px',
     opacity: 0.9,
-  }
+  };
 
   const headerStyles: React.CSSProperties = {
     fontWeight: 'bold',
     fontSize: '45px',
-  }
+  };
 
   return (
     <React.Fragment>
@@ -37,20 +42,17 @@ const TeamInformation = (props: Props) => {
         columns={1}
         rows={2}
         pb={5}
-        templateRows={['auto', null, null, '30vh']}
-      >
+        templateRows={['auto', null, null, '30vh']}>
         <MotionBox
           initial={{y: -500}}
           animate={{y: 0}}
-          transition={{ease: 'easeOut', duration: 0.8}}
-        >
+          transition={{ease: 'easeOut', duration: 0.8}}>
           <Flex
             align='center'
             justify='center'
             mt={5}
             direction={['column', null, null, 'row']}
-            pb={5}
-          >
+            pb={5}>
             <Link to='/'>
               <Image
                 boxSize={['md', 'lg', '17rem']}
@@ -67,14 +69,12 @@ const TeamInformation = (props: Props) => {
               align='center'
               direction={['column']}
               justify='space-evenly'
-              h={'50%'}
-            >
+              h={'50%'}>
               <Heading
                 pb={[0, null, null, 15]}
                 style={headerStyles}
                 mt={['1rem', null]}
-                align='center'
-              >
+                align='center'>
                 {name}
               </Heading>
               <Text pb={[0, null, null, 15]} style={textStyles}>
@@ -82,12 +82,10 @@ const TeamInformation = (props: Props) => {
               </Text>
               <Text
                 pb={[0, null, null, 15]}
-                style={textStyles}
-              >{`${conference}ern Conference`}</Text>
+                style={textStyles}>{`${conference}ern Conference`}</Text>
               <Text
                 pb={[0, null, null, 15]}
-                style={textStyles}
-              >{`${division} Division`}</Text>
+                style={textStyles}>{`${division} Division`}</Text>
             </Stack>
           </Flex>
         </MotionBox>
@@ -95,7 +93,7 @@ const TeamInformation = (props: Props) => {
         <NBAPlayersList teamId={teamId} />
       </MotionSimpleGrid>
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default TeamInformation
+export default TeamInformation;
